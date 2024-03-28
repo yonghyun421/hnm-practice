@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Col,
-  Container,
-  Row,
-  DropdownButton,
-  Dropdown,
-  Button,
-} from "react-bootstrap";
+import { Col, Container, Row, Dropdown, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 const ProductDetail = () => {
@@ -16,12 +9,12 @@ const ProductDetail = () => {
     let url = `https://my-json-server.typicode.com/yonghyun421/hnm-practice/products/${id}`;
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
     setProduct(data);
   };
 
   useEffect(() => {
     getProductDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
