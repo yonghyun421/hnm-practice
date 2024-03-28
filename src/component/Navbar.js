@@ -37,7 +37,11 @@ const Navbar = () => {
         </ul>
         <div className="search-area">
           <FontAwesomeIcon icon={faSearch} />
-          <input type="text" placeholder="제품검색" />
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="상품을 입력해주세요."
+          />
         </div>
       </div>
     </div>

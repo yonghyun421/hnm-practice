@@ -25,9 +25,18 @@
 
 .search-area {
   position: absolute;
-  right: 0;
-  display: flex;
-  justify-content: flex-end;
-  justify-self: center;
-  align-items: center;
+  right: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  margin-top: 15px;
+}
+
+#searchInput {
+  border: none;
+  border-bottom: 2px solid black;
+  padding-bottom: 4px;
+  background-color: transparent;
+}
+
+#searchInput:focus {
+  outline: none;
 }
