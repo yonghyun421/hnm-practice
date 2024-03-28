@@ -1,0 +1,65 @@
+.login-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.nav-section {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-area {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-list {
+  display: flex;
+  list-style-type: none;
+}
+
+.menu-list li {
+  padding: 10px;
+}
+
+.search-area {
+  position: absolute;
+  right: 20px;
+  font-family: "Noto Sans KR", sans-serif;
+  margin-top: 15px;
+}
+
+#searchInput {
+  border: none;
+  border-bottom: 2px solid black;
+  padding-bottom: 4px;
+  background-color: transparent;
+}
+
+#searchInput:focus {
+  outline: none;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-image {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#add-cart-button {
+  margin-top: 10px;
+}
+
+.login-container {
+  padding: 0 200px;
+}
+
+.login-button:hover {
+  background-color: black;
+  color: white;
+}
