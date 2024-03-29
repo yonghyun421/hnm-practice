@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ authentication, setAuthentication }) => {
   const menuList = [
     "여성",
     "Divided",
@@ -20,13 +20,29 @@ const Navbar = () => {
   const goToLogin = () => {
     navigate("/login");
   };
+
+  const search = (e) => {
+    if (e.key === "Enter") {
+      let keyword = e.target.value;
+      navigate(`/?q=${keyword}`);
+    }
+  };
   return (
     <div>
-      <div>
-        <div className="login-button" onClick={goToLogin}>
-          <FontAwesomeIcon icon={faUser} />
-          <div>로그인</div>
-        </div>
+      <div className="nav-login-button">
+        {authentication ? (
+          <div onClick={() => setAuthentication(false)}>
+            <FontAwesomeIcon icon={faUser} />
+            <span style={{ cursor: "pointer", marginLeft: "5px" }}>
+              로그아웃
+            </span>
+          </div>
+        ) : (
+          <div onClick={() => navigate("/login")}>
+            <FontAwesomeIcon icon={faUser} />
+            <span style={{ cursor: "pointer", marginLeft: "5px" }}>로그인</span>
+          </div>
+        )}
       </div>
       <div className="nav-section">
         <img
@@ -46,6 +62,7 @@ const Navbar = () => {
           <input
             id="searchInput"
             type="text"
+            onKeyPress={(e) => search(e)}
             placeholder="상품을 입력해주세요."
           />
         </div>
