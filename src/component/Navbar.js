@@ -2,7 +2,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = ({ authentication, setAuthentication }) => {
   const menuList = [
@@ -17,16 +17,13 @@ const Navbar = ({ authentication, setAuthentication }) => {
   ];
   const navigate = useNavigate();
 
-  const goToLogin = () => {
-    navigate("/login");
-  };
-
-  const search = (e) => {
+  const searchProduct = (e) => {
     if (e.key === "Enter") {
       let keyword = e.target.value;
       navigate(`/?q=${keyword}`);
     }
   };
+
   return (
     <div>
       <div className="nav-login-button">
@@ -45,11 +42,13 @@ const Navbar = ({ authentication, setAuthentication }) => {
         )}
       </div>
       <div className="nav-section">
-        <img
-          width={100}
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1200px-H%26M-Logo.svg.png"
-          alt="logo"
-        />
+        <Link to="/">
+          <img
+            width={100}
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/1200px-H%26M-Logo.svg.png"
+            alt="logo"
+          />
+        </Link>
       </div>
       <div className="menu-area">
         <ul className="menu-list">
@@ -62,7 +61,7 @@ const Navbar = ({ authentication, setAuthentication }) => {
           <input
             id="searchInput"
             type="text"
-            onKeyPress={(e) => search(e)}
+            onKeyPress={(e) => searchProduct(e)}
             placeholder="상품을 입력해주세요."
           />
         </div>
