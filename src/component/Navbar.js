@@ -1,7 +1,7 @@
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = ({ authentication, setAuthentication }) => {
@@ -16,6 +16,7 @@ const Navbar = ({ authentication, setAuthentication }) => {
     "지속가능성",
   ];
   const navigate = useNavigate();
+  let [width, setWidth] = useState(0);
 
   const searchProduct = (e) => {
     if (e.key === "Enter") {
@@ -26,20 +27,33 @@ const Navbar = ({ authentication, setAuthentication }) => {
 
   return (
     <div>
-      <div className="nav-login-button">
-        {authentication ? (
-          <div onClick={() => setAuthentication(false)}>
-            <FontAwesomeIcon icon={faUser} />
-            <span style={{ cursor: "pointer", marginLeft: "5px" }}>
-              로그아웃
-            </span>
-          </div>
-        ) : (
-          <div onClick={() => navigate("/login")}>
-            <FontAwesomeIcon icon={faUser} />
-            <span style={{ cursor: "pointer", marginLeft: "5px" }}>로그인</span>
-          </div>
-        )}
+      <div className="side-menu" style={{ width: width }}>
+        <button className="close-button" onClick={() => setWidth(0)}>
+          &times;
+        </button>
+        <div className="side-menu-list" id="menu-list">
+          {menuList.map((menu, index) => (
+            <button key={index}>{menu}</button>
+          ))}
+        </div>
+      </div>
+      <div className="nav-header">
+        <div className="burger-menu hide">
+          <FontAwesomeIcon icon={faBars} onClick={() => setWidth(250)} />
+        </div>
+        <div className="nav-login-button">
+          {authentication ? (
+            <div onClick={() => setAuthentication(false)}>
+              <FontAwesomeIcon icon={faUser} />
+              <span style={{ cursor: "pointer" }}>로그아웃</span>
+            </div>
+          ) : (
+            <div onClick={() => navigate("/login")}>
+              <FontAwesomeIcon icon={faUser} />
+              <span style={{ cursor: "pointer" }}>로그인</span>
+            </div>
+          )}
+        </div>
       </div>
       <div className="nav-section">
         <Link to="/">
