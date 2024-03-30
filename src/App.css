@@ -72,7 +72,7 @@
   color: white;
 }
 
-.burger-menu {
+.expand-menu {
   margin-left: 20px;
   margin-top: 20px;
 }
@@ -109,7 +109,7 @@
   width: 120px;
 }
 
-.side-menu .closebtn {
+.side-menu .close-button {
   position: absolute;
   top: 0;
   right: 25px;

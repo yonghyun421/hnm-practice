@@ -38,7 +38,7 @@ const Navbar = ({ authentication, setAuthentication }) => {
         </div>
       </div>
       <div className="nav-header">
-        <div className="burger-menu hide">
+        <div className="expand-menu hide">
           <FontAwesomeIcon icon={faBars} onClick={() => setWidth(250)} />
         </div>
         <div className="nav-login-button">
