@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ setAuthentication }) => {
@@ -13,21 +13,21 @@ const Login = ({ setAuthentication }) => {
   return (
     <Container className="login-container">
       <Form onSubmit={(e) => loginUser(e)}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email 주소</Form.Label>
-          <Form.Control type="email" placeholder="이메일을 입력해주세요" />
-          <Form.Text className="text-muted">
-            @를 포함한 이메일 주소를 입력해주세요.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>비밀번호</Form.Label>
-          <Form.Control type="password" placeholder="비밀번호를 입력해주세요" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+        <h3 className="login-title">LOGIN</h3>
+        <Row className="mb-3">
+          <Col xs={12}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>ID</Form.Label>
+              <Form.Control type="id" placeholder="Enter ID" />
+            </Form.Group>
+          </Col>
+          <Col xs={12}>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" />
+            </Form.Group>
+          </Col>
+        </Row>
         <Button className="login-button" variant="danger" type="submit">
           로그인
         </Button>

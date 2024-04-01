@@ -44,7 +44,7 @@ const ProductAll = () => {
           <Row>
             {productList.map((product) => {
               return (
-                <Col lg={3} key={product.id}>
+                <Col md={3} sm={12} key={product.id}>
                   <ProductCard product={product} />
                 </Col>
               );
