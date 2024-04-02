@@ -9,7 +9,6 @@ const ProductAll = () => {
   const productList = useSelector((state) => state.product.productList);
   // eslint-disable-next-line no-unused-vars
   const [query, setQuery] = useSearchParams("");
-  const [error, setError] = useState("");
   const dispatch = useDispatch();
 
   const getProducts = async () => {
@@ -25,21 +24,15 @@ const ProductAll = () => {
   return (
     <div>
       <Container>
-        {error ? (
-          <Alert variant="danger" className="text-center">
-            {error}
-          </Alert>
-        ) : (
-          <Row>
-            {productList?.map((product) => {
-              return (
-                <Col md={3} sm={12} key={product.id}>
-                  <ProductCard product={product} />
-                </Col>
-              );
-            })}
-          </Row>
-        )}
+        <Row>
+          {productList?.map((product) => {
+            return (
+              <Col md={3} sm={12} key={product.id}>
+                <ProductCard product={product} />
+              </Col>
+            );
+          })}
+        </Row>
       </Container>
     </div>
   );
