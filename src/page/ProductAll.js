@@ -2,30 +2,19 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "../component/ProductCard";
 import { Col, Container, Row, Alert } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { productAction } from "../redux/actions/productAction";
 
 const ProductAll = () => {
-  const [productList, setProductList] = useState([]);
+  const productList = useSelector((state) => state.product.productList);
   // eslint-disable-next-line no-unused-vars
   const [query, setQuery] = useSearchParams("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   const getProducts = async () => {
-    try {
-      let keyword = query.get("q") || "";
-      let url = `https://my-json-server.typicode.com/yonghyun421/hnm-practice/products?q=${keyword}`;
-      let response = await fetch(url);
-      let data = await response.json();
-      if (data.length < 1) {
-        if (keyword !== "") {
-          setError(`${keyword}와 일치하는 상품이 없습니다`);
-        } else {
-          throw new Error("결과가 없습니다");
-        }
-      }
-      setProductList(data);
-    } catch (err) {
-      setError(err.message);
-    }
+    let keyword = query.get("q") || "";
+    dispatch(productAction.getProducts(keyword));
   };
 
   useEffect(() => {
@@ -42,7 +31,7 @@ const ProductAll = () => {
           </Alert>
         ) : (
           <Row>
-            {productList.map((product) => {
+            {productList?.map((product) => {
               return (
                 <Col md={3} sm={12} key={product.id}>
                   <ProductCard product={product} />

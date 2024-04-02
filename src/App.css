@@ -49,6 +49,7 @@
 #searchInput:focus {
   outline: none;
 }
+
 .card {
   border: none !important;
   margin-bottom: 10px;
