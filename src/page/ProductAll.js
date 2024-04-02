@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ProductCard from "../component/ProductCard";
-import { Col, Container, Row, Alert } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { productAction } from "../redux/actions/productAction";
